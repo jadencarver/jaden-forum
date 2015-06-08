@@ -1,0 +1,19 @@
+<article class="row">
+	<h1><%= @post.title %></h1>
+	<p><%= @post.user.name %></p>
+	<blockquote><%= @post.post %></blockquote>
+	<hr>
+	<% @post.comments.each do |comment| %>
+		<%= comment.user.name %>
+		<blockquote><%= comment.comment %></blockquote>
+	<% end %>
+</article>
+
+<form action="/posts/<%= @post.id %>/comments" method="POST">
+	<div class="row">
+		<textarea name="comment[comment]" rows="8"></textarea>
+	</div>
+	<div class="row">
+		<input type="submit" value="Post Comment">
+	</div>
+</form>

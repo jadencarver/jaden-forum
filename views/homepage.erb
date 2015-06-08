@@ -1,0 +1,41 @@
+<div id="homepage" class="row">
+	<%= notice %>
+	<form action="/users" method="POST">
+		<h3>Sign Up</h3>
+		<div class="row">
+			<div class="label"><label for="user_name">Name:</label></div>
+			<div class="field"><input type="text" id="user_name" name="user[name]"></div>
+		</div>
+		<div class="row">
+			<div class="label"><label for="user_email">Email:</label></div>
+			<div class="field"><input type="email" id="user_email" name="user[email]"></div>
+		</div>
+		<div class="row">
+			<div class="label"><label for="user_password">Password:</label></div>
+			<div class="field"><input type="password" id="user_password" name="user[password]"></div>
+		</div>
+		<div class="row">
+			<div class="label"><label for="user_password">Retype Password:</label></div>
+			<div class="field"><input type="text" id="user_password" name="user[password]"></div>
+		</div>
+		<div class="actions">
+			<input type="submit" value="Create User">
+		</div>
+	</form>
+
+	<form action="/users/login" method="POST">
+		<h3>Log In</h3>
+		<div class="row">
+			<div class="label"><label for="login_email">Email:</label></div>
+			<div class="field"><input type="email" id="login_email" name="login[email]"></div>
+		</div>
+		<div class="row">
+			<div class="label"><label for="login_password">Password:</label></div>
+			<div class="field"><input type="password" id="login_password" name="login[password]"></div>
+		</div>
+		<div class="actions">
+			<input type="submit" value="Log In">
+		</div>
+	</form>
+
+</div>
