@@ -44,12 +44,14 @@ module JadenForum
 
     post '/users' do
       if params[:user][:password] == params[:user][:retype_password]
-        $db.exec_params(<<-SQL, params[:user][:name], params[:user][:email], params[:password])
+        user = $db.exec_params(<<-SQL, [params[:user][:name], params[:user][:email], params[:password]]).first
           INSERT INTO users
             (name, email, password, created_at)
           VALUES
-            ($1, $2, $3, CURRENT_TIMESTAMP);
+            ($1, $2, $3, CURRENT_TIMESTAMP)
+          RETURNING id
         SQL
+        session[:user_id] = user["id"]
         redirect '/posts'
       else
         @notice = "Passwords do not match"
